@@ -1,23 +1,28 @@
 import GameBoardCell from "./GameBoardCell";
-const GameBoard = () => {
+const GameBoard = (props) => {
   return (
     <div>
-      Game board here
-      <div className="game-board-row">
-        <GameBoardCell value="X" />
-        <GameBoardCell value="0" />
-        <GameBoardCell value="X" />
-      </div>
-      <div className="game-board-row">
-        <GameBoardCell value="" />
-        <GameBoardCell value="0" />
-        <GameBoardCell value="" />
-      </div>
-      <div className="game-board-row">
-        <GameBoardCell value="" />
-        <GameBoardCell value="" />
-        <GameBoardCell value="" />
-      </div>
+      {[0, 1, 2].map((x, i) => {
+        return (
+          <div className="game-board-row" key={i}>
+            {[0, 1, 2].map((y, i) => {
+              const index = x * 3 + y;
+
+              let isWinningCell = props.winningLine?.includes(index);
+              return (
+                <GameBoardCell
+                  key={index}
+                  isWinningCell={isWinningCell}
+                  value={props.boardState[index]}
+                  setValue={() => {
+                    props.onCellClicked(index);
+                  }}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 };

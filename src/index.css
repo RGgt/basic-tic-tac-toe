@@ -28,3 +28,21 @@ body {
   border-radius: 0;
   border: 1px solid #333;
 }
+
+.cell-owner-X {
+  color: blue;
+}
+.winning-cell-owner-X {
+  color: blue;
+  background-color: rgba(0, 0, 255, 0.3);
+}
+.cell-owner-0 {
+  color: red;
+}
+.winning-cell-owner-0 {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+#game-status-info {
+  white-space: pre-line;
+}
